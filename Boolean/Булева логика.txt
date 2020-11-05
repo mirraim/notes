@@ -1,0 +1,16 @@
+Конъюнкция - логическое умножение.
+Выражение будет истина только  в одном случае, если первое и второе условие - истина.
+
+true И true = true
+false И true = false
+true И false = false
+false И false = false
+
+
+Дизъюнкция - логическое сложение.
+Если одно из условий будет истина, то все выражение будет истина.
+
+true И true = true
+false И true = true
+true И false = true
+false И false = false
