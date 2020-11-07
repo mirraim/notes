@@ -13,7 +13,7 @@ switch (value) {
         System.out.println("Hello");
         break;
 }
-
+_________________________________________________________
 java 8
 switch (str) {
         case "1":
