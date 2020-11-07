@@ -17,3 +17,10 @@ true И true = true
 false И true = true
 true И false = true
 false И false = false
+
+
+! Логическое отрицание
+Оператор логического отрицания позволяет менять булево значение на противоположное.
+
+!false == true
+!true == false
