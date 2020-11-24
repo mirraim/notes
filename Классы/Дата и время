@@ -1,0 +1,43 @@
+1. LocalDate - предназначен для отображения даты (год, месяц, день (yyyy-MM-dd))
+
+2. LocalTime - предназначен для отображения времени (час, минуты, секунды и наносекунды (HH-mm-ss-ns))
+
+3. LocalDateTime - предназначен для отображения даты и времени (yyyy-MM-dd-HH-mm-ss-ns)
+
+Для того, чтобы получить текущие дату, время или и дату и время,
+во всех трех классах определен статический метод now(),
+который возвращает объект соответствующего класса.
+
+в пакете java.time определен класс DateTimeFormatter,
+который с помощью определенных в нем методов позволяет отформатировать дату в соответствии с образцом,
+который мы укажем. Вернемся к последнему примеру вывода даты и времени,
+отформатируем вывод таким образом, чтобы вывод в консоль не содержал символ "T", а также наносекунды.
+ Для этого мы будем использовать статический метод ofPattern() класса DateTimeFormatter:
+
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class UsagePackageDate {
+    public static void main(String[] args) {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        System.out.println("Текущие дата и время до форматирования: " + currentDateTime);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String currentDateTimeFormat = currentDateTime.format(formatter);
+        System.out.println("Текущие дата и время после форматирования: " + currentDateTimeFormat);
+    }
+}
+
+в метод мы передаем строку, которая содержит образец согласно которому
+будет произведено форматирование даты, например:
+
+MM - номер месяца (с лидирующими нулями если номер месяца < 10),
+
+если мы укажем MMM, то вывод изменится и отобразится
+четырех буквенное сокращение месяца в русской локализации
+и трех буквенное - в английской (Feb).
+
+Полный перечень принятых сокращений можно найти в документации:
+https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
+
