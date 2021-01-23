@@ -1,0 +1,45 @@
+#### Параметризация поведения
+Описывает ситуацию, когда в метод необходимо передать поведение.
+######
+В качестве параметра в метод передается функциональный интерфейс.
+
+    
+    package ru.job4j.lambda;
+    
+    import java.util.ArrayList;
+    import java.util.List;
+    import java.util.function.Predicate;
+    
+    public class SearchAtt {
+        public static List<Attachment> filterSize(List<Attachment> list) {
+            Predicate<Attachment> predicate = new Predicate<Attachment>() {
+                @Override
+                public boolean test(Attachment attachment) {
+                    return attachment.getSize() > 100;
+                }
+            };
+            return filter(list, predicate);
+        }
+    
+        public static List<Attachment> filterName(List<Attachment> list) {
+        
+            return filter(list, att -> att.getName().contains("bug");
+        }
+    
+        public static List<Attachment> filter(List<Attachment> list,
+                                              Predicate<Attachment> p) {
+            List<Attachment> rsl = new ArrayList<>();
+            for (Attachment att : list) {
+                if (p.test(att)) {
+                    rsl.add(att);
+                }
+            }
+            return rsl;
+        }
+    }
+    
+В этом примере метод filter(List<Attachment> list, Predicate<Attachment> p) параметризует поведение.
+
+Метод List<Attachment> filterSize(List<Attachment> list) передает параметр в метод filter(), используя анонимный класс.
+
+public static List<Attachment> filterName(List<Attachment> list) передает параметр в метод filter(), используя лямбда-выражение.
